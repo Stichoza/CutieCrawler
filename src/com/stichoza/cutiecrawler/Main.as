@@ -1,5 +1,6 @@
 package com.stichoza.cutiecrawler
 {
+	import com.stichoza.cutiecrawler.cuteplanet.AbstractCutem;
 	import flash.desktop.NativeApplication;
 	import flash.events.Event;
 	import flash.display.Sprite;
@@ -34,8 +35,7 @@ package com.stichoza.cutiecrawler
 		{
 			removeEventListener(Event.ADDED_TO_STAGE, init);
 			// entry point
-			
-			trace("Hello, World!");
+			var w1 = new AbstractCutem("aa");
 		}
 		
 		private function deactivate(e:Event):void
