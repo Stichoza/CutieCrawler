@@ -37,9 +37,9 @@ package com.stichoza.cutiecrawler.cuteplanet
 		public function locate(x:int = 0, y:int = 0, z:int = 0):void
 		{
 			this.x = x * cutieWidth;
-			this.y = stage.stageHeight - cutieHeightSprite - y * (cutieHeight - cutieThick); //  + cutieHeight
-			this.y -= z * cutieHeight;
-			trace("Located to: " + this.x + ", " + this.y);
+			this.y = stage.stageHeight - cutieHeightSprite - y * (cutieHeight - cutieThick + 2); //  + cutieHeight
+			this.y -= z * cutieThick;
+			trace("Location:   " + x + ",\t" + y + ",\t" + z + "\tCoord:   " + this.x + ",\t" + this.y);
 			// TODO: z axis position by layers or something
 		}
 	

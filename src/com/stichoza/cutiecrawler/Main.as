@@ -45,7 +45,7 @@ package com.stichoza.cutiecrawler
 			var stageRect:Sprite = new Sprite();
 			stageRect.graphics.lineStyle(1, 0x00FF00);
 			stageRect.graphics.beginFill(0xFF00FF);
-			stageRect.graphics.drawRect(5, 5, stage.stageWidth - 10, stage.stageHeight - 10);
+			stageRect.graphics.drawRect(1, 1, stage.stageWidth - 2, stage.stageHeight - 2);
 			addChild(stageRect);
 			trace(stage.stageWidth);
 			// cu
@@ -54,13 +54,16 @@ package com.stichoza.cutiecrawler
 			w1.locate(0, 1, 0);
 			var w2:AbstractCutem = new AbstractCutem("aa");
 			addChild(w2);
-			w2.locate(3, 2, 0);
+			w2.locate(3, 3, 0);
 			var w3:AbstractCutem = new AbstractCutem("aa");
 			addChild(w3);
 			w3.locate(2, 2, 0);
 			var w4:AbstractCutem = new AbstractCutem("aa");
 			addChild(w4);
-			w4.locate(3, 3, 0);
+			w4.locate(3, 2, 0);
+			var w5:AbstractCutem = new AbstractCutem("aa");
+			addChild(w5);
+			w5.locate(0, 1, 1);
 		}
 		
 		public function newCutie(name:String, x:int, y:int, z:int):Boolean
