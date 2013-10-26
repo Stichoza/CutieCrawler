@@ -31,9 +31,9 @@ package com.stichoza.cutiecrawler.cuteplanet
 		public static const timeChanger:Boolean = false;
 		public static const bagItem:Boolean = false;
 		
-		public static const healthMod:int = 0; // if pickable + if healthChanger > change health by
-		public static const itemName:String = ""; // if pickable + if bagItem > put in bag
-		public static const pick:int = false;
+		public static const healthMod:int = 0; // if pickable + if healthChanger -> change health by (+/- int)
+		public static const itemName:String = ""; // if pickable + if bagItem -> put in bag
+		public static const damage:int = 0; // TODO: replace with helthMod
 		
 		
 		public function AbstractCutem(name:String, x:int = 0, y:int = 0, z:int = 0)
