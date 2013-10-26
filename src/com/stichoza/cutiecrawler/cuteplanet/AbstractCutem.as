@@ -21,6 +21,7 @@ package com.stichoza.cutiecrawler.cuteplanet
 		public static const cutieWidth:int = 101;
 		public static const cutieHeight:int = 121;
 		public static const cutieThick:int = 42;
+		public static const cutieThickFactor:int = 1; // 1:normal, 2:tall
 		
 		public static const buildable:Boolean = true;
 		public static const standable:Boolean = true;
@@ -54,7 +55,6 @@ package com.stichoza.cutiecrawler.cuteplanet
 			this.y = stage.stageHeight - cutieHeightSprite - y * (cutieHeight - cutieThick + 2); //  + cutieHeight
 			this.y -= z * cutieThick;
 			trace("Location:   " + x + ",\t" + y + ",\t" + z + "\tCoord:   " + this.x + ",\t" + this.y);
-			// TODO: z axis position by layers or something
 		}
 	
 	}
