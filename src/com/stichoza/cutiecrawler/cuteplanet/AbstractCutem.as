@@ -11,15 +11,16 @@ package com.stichoza.cutiecrawler.cuteplanet
 	 */
 	public class AbstractCutem extends Sprite
 	{
-		[Embed(source="../../../../../assets/planetcute/BrownBlock.png")] // TODO: deal with embeds
+		[Embed(source="../../../../../assets/planetcute/DirtBlock.png")] // TODO: deal with embeds
 		
 		private var AbstractCutemClass:Class;
 		private var co:Bitmap = new AbstractCutemClass();
 		
 		public static var cutieWidthSprite:int = 101;
-		public static var cutieWidth:int = 101;
 		public static var cutieHeightSprite:int = 171;
-		public static var cutieHeight:int = 43;
+		public static var cutieWidth:int = 101;
+		public static var cutieHeight:int = 121;
+		public static var cutieThick:int = 42;
 		
 		public function AbstractCutem(name:String, x:int = 0, y:int = 0, z:int = 0)
 		{
@@ -33,10 +34,11 @@ package com.stichoza.cutiecrawler.cuteplanet
 			//addEventListener(Event.ADDED_TO_STAGE, init);
 		}
 		
-		public function locate(x:int = 0, y:int = 0, iz:int = 0):void
+		public function locate(x:int = 0, y:int = 0, z:int = 0):void
 		{
 			this.x = x * cutieWidth;
-			this.y =  stage.stageHeight - cutieHeightSprite - y * cutieHeight;
+			this.y = stage.stageHeight - cutieHeightSprite - y * (cutieHeight - cutieThick); //  + cutieHeight
+			this.y -= z * cutieHeight;
 			trace("Located to: " + this.x + ", " + this.y);
 			// TODO: z axis position by layers or something
 		}

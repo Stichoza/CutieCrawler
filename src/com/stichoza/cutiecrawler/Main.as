@@ -16,10 +16,11 @@ package com.stichoza.cutiecrawler
 	public class Main extends Sprite
 	{
 		
-		
+		private var objectMatrix:Array = new Array(new Array(5));
 		
 		public function Main():void
 		{
+			trace(this.objectMatrix);
 			stage.scaleMode = StageScaleMode.NO_SCALE;
 			stage.align = StageAlign.BOTTOM;
 			stage.addEventListener(Event.DEACTIVATE, deactivate);
@@ -28,9 +29,13 @@ package com.stichoza.cutiecrawler
 			Multitouch.inputMode = MultitouchInputMode.TOUCH_POINT;
 			
 			if (stage)
+			{
 				init();
+			}
 			else
+			{
 				addEventListener(Event.ADDED_TO_STAGE, init);
+			}
 		}
 		
 		private function init(e:Event = null):void
@@ -40,18 +45,27 @@ package com.stichoza.cutiecrawler
 			var stageRect:Sprite = new Sprite();
 			stageRect.graphics.lineStyle(1, 0x00FF00);
 			stageRect.graphics.beginFill(0xFF00FF);
-			stageRect.graphics.drawRect(0, 0, stage.stageWidth, stage.stageHeight);
+			stageRect.graphics.drawRect(5, 5, stage.stageWidth - 10, stage.stageHeight - 10);
 			addChild(stageRect);
 			trace(stage.stageWidth);
 			// cu
 			var w1:AbstractCutem = new AbstractCutem("aa");
 			addChild(w1);
-			w1.locate(2, 3, 4);
-			trace(w1.height);
+			w1.locate(0, 1, 0);
+			var w2:AbstractCutem = new AbstractCutem("aa");
+			addChild(w2);
+			w2.locate(3, 2, 0);
+			var w3:AbstractCutem = new AbstractCutem("aa");
+			addChild(w3);
+			w3.locate(2, 2, 0);
+			var w4:AbstractCutem = new AbstractCutem("aa");
+			addChild(w4);
+			w4.locate(3, 3, 0);
 		}
 		
-		public function newCutie(name:String, x:int, y:int, z:int):Boolean {
-			
+		public function newCutie(name:String, x:int, y:int, z:int):Boolean
+		{
+			return false;
 		}
 		
 		private function deactivate(e:Event):void
