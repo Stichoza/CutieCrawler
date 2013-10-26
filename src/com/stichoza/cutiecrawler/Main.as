@@ -48,7 +48,7 @@ package com.stichoza.cutiecrawler
 			stageRect.graphics.drawRect(1, 1, stage.stageWidth - 2, stage.stageHeight - 2);
 			addChild(stageRect);
 			trace(stage.stageWidth);
-			// cu
+			// cutie tests
 			var w1:AbstractCutem = new AbstractCutem("aa");
 			addChild(w1);
 			w1.locate(0, 1, 0);
@@ -64,6 +64,9 @@ package com.stichoza.cutiecrawler
 			var w5:AbstractCutem = new AbstractCutem("aa");
 			addChild(w5);
 			w5.locate(0, 1, 1);
+			var w6:AbstractCutem = new AbstractCutem("aa");
+			addChild(w6);
+			w6.locate(3, 2, 1);
 		}
 		
 		public function newCutie(name:String, x:int, y:int, z:int):Boolean

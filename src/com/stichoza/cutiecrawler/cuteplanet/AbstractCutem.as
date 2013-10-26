@@ -16,11 +16,25 @@ package com.stichoza.cutiecrawler.cuteplanet
 		private var AbstractCutemClass:Class;
 		private var co:Bitmap = new AbstractCutemClass();
 		
-		public static var cutieWidthSprite:int = 101;
-		public static var cutieHeightSprite:int = 171;
-		public static var cutieWidth:int = 101;
-		public static var cutieHeight:int = 121;
-		public static var cutieThick:int = 42;
+		public static const cutieWidthSprite:int = 101;
+		public static const cutieHeightSprite:int = 171;
+		public static const cutieWidth:int = 101;
+		public static const cutieHeight:int = 121;
+		public static const cutieThick:int = 42;
+		
+		public static const buildable:Boolean = true;
+		public static const standable:Boolean = true;
+		public static const pickable:Boolean = false;
+		public static const attackable:Boolean = false;
+		
+		public static const healthChanger:Boolean = false;
+		public static const timeChanger:Boolean = false;
+		public static const bagItem:Boolean = false;
+		
+		public static const healthMod:int = 0; // if pickable + if healthChanger > change health by
+		public static const itemName:String = ""; // if pickable + if bagItem > put in bag
+		public static const pick:int = false;
+		
 		
 		public function AbstractCutem(name:String, x:int = 0, y:int = 0, z:int = 0)
 		{
