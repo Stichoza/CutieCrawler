@@ -16,9 +16,11 @@ package com.stichoza.cutiecrawler
 	public class Main extends Sprite
 	{
 		
+		
+		
 		public function Main():void
 		{
-			stage.scaleMode = StageScaleMode.SHOW_ALL;
+			stage.scaleMode = StageScaleMode.NO_SCALE;
 			stage.align = StageAlign.BOTTOM;
 			stage.addEventListener(Event.DEACTIVATE, deactivate);
 			
@@ -35,13 +37,27 @@ package com.stichoza.cutiecrawler
 		{
 			removeEventListener(Event.ADDED_TO_STAGE, init);
 			// entry point
-			var w1 = new AbstractCutem("aa");
+			var stageRect:Sprite = new Sprite();
+			stageRect.graphics.lineStyle(1, 0x00FF00);
+			stageRect.graphics.beginFill(0xFF00FF);
+			stageRect.graphics.drawRect(0, 0, stage.stageWidth, stage.stageHeight);
+			addChild(stageRect);
+			trace(stage.stageWidth);
+			// cu
+			var w1:AbstractCutem = new AbstractCutem("aa");
+			addChild(w1);
+			w1.locate(2, 3, 4);
+			trace(w1.height);
+		}
+		
+		public function newCutie(name:String, x:int, y:int, z:int):Boolean {
+			
 		}
 		
 		private function deactivate(e:Event):void
 		{
-			// make sure the app behaves well (or exits) when in background
-			//NativeApplication.nativeApplication.exit();
+			//NativeApplication.nativeApplication.exit(); // exit on minimize
+			// TODO: do not exit, just pause game
 		}
 	
 	}

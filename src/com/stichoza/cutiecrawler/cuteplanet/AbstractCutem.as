@@ -3,6 +3,7 @@ package com.stichoza.cutiecrawler.cuteplanet
 	import flash.display.Bitmap;
 	import flash.display.Sprite;
 	import flash.events.Event;
+	import flash.display.DisplayObject;
 	
 	/**
 	 * ...
@@ -10,25 +11,34 @@ package com.stichoza.cutiecrawler.cuteplanet
 	 */
 	public class AbstractCutem extends Sprite
 	{
-		[Embed(src="/assets/planetcute/WoodBlock.png")]; // TODO: deal with embeds
+		[Embed(source="../../../../../assets/planetcute/BrownBlock.png")] // TODO: deal with embeds
+		
 		private var AbstractCutemClass:Class;
-		private var AbstractCutemPNG:Bitmap = new AbstractCutemClass();
+		private var co:Bitmap = new AbstractCutemClass();
 		
-		protected var name;
+		public static var cutieWidthSprite:int = 101;
+		public static var cutieWidth:int = 101;
+		public static var cutieHeightSprite:int = 171;
+		public static var cutieHeight:int = 43;
 		
-		public function AbstractCutem(name, x = 0, y = 0, z = 0)
+		public function AbstractCutem(name:String, x:int = 0, y:int = 0, z:int = 0)
 		{
-			this.name = name;
-			addEventListener(Event.ADDED_TO_STAGE, init);
+			this.width = AbstractCutemClass.cutieWidthSprite;
+			this.height = AbstractCutemClass.cutieHeightSprite;
+			co.width = cutieWidthSprite;
+			co.height = cutieHeightSprite;
+			co.x = 0; // TODO: coordinate calculations
+			co.y = 0;
+			addChild(co);
+			//addEventListener(Event.ADDED_TO_STAGE, init);
 		}
 		
-		public function init()
+		public function locate(x:int = 0, y:int = 0, iz:int = 0):void
 		{
-			trace("ac init");
-			removeEventListener(Event.ADDED_TO_STAGE, init);
-			AbstractCutemPNG.height = 171;
-			AbstractCutemPNG.width = 101;
-			addChild(AbstractCutemPNG);
+			this.x = x * cutieWidth;
+			this.y =  stage.stageHeight - cutieHeightSprite - y * cutieHeight;
+			trace("Located to: " + this.x + ", " + this.y);
+			// TODO: z axis position by layers or something
 		}
 	
 	}
