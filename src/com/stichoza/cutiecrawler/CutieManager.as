@@ -16,7 +16,12 @@ package com.stichoza.cutiecrawler {
 		
 		private var objectMatrix:Array;
 		
-		public function CutieManager(screenWidth:int, screenHeight:int) {
+		public var stageRef:Stage;
+		
+		public function CutieManager(fakeStage:Stage) {
+			this.stageRef = fakeStage;
+			var screenWidth:int = fakeStage.stageWidth;
+			var screenHeight:int = fakeStage.stageHeight;
 			maxBlocksX = screenWidth / AbstractCutem.cutieWidth;
 			maxBlocksY = screenHeight / AbstractCutem.cutieHeight;
 			maxBlocksZ = 5;
@@ -49,7 +54,7 @@ package com.stichoza.cutiecrawler {
 			}
 			trace("creating cutie on " + x + "," + y + "," + z);
 			objectMatrix[x][y][z] = obj;
-			addChild(objectMatrix[x][y][z]); // TODO: add to stage not somewhere in the fuck
+			this.stageRef.addChild(objectMatrix[x][y][z]); // TODO: add to stage not somewhere in the fuck
 			objectMatrix[x][y][z].locate(x, y, z);
 			return 0;
 		}

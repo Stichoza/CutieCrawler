@@ -34,7 +34,7 @@ package com.stichoza.cutiecrawler {
 		private function init(e:Event = null):void {
 			removeEventListener(Event.ADDED_TO_STAGE, init);
 			// entry point
-			cMatrix = new CutieManager(stage.stageWidth, stage.stageHeight);
+			cMatrix = new CutieManager(stage);
 			var stageRect:Sprite = new Sprite();
 			stageRect.graphics.lineStyle(1, 0x00FF00);
 			stageRect.graphics.beginFill(0xFF00FF);
