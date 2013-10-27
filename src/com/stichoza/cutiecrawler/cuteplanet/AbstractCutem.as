@@ -55,7 +55,7 @@ package com.stichoza.cutiecrawler.cuteplanet {
 		
 		public function locate(x:int = 0, y:int = 0, z:int = 0):void {
 			this.x = x * cutieWidth;
-			this.y = stage.stageHeight - cutieHeightSprite - y * (cutieHeight - cutieThick + 2); // FIX: CutieManager instead :v
+			this.y = stage.stageHeight - cutieHeightSprite - y * (cutieHeight - cutieThick + 2); // FIX: CutieManager instead :v Exception thrown on this line because this fuckin object in not being added to stage in CutieManager.newCutie()
 			this.y -= z * cutieThick;
 			trace("Location:   " + x + ",\t" + y + ",\t" + z + "\tCoord:   " + this.x + ",\t" + this.y);
 		}

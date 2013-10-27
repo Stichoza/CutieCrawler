@@ -9,7 +9,7 @@ package com.stichoza.cutiecrawler {
 	 * ...
 	 * @author Stichoza
 	 */
-	public class CutieManager extends Sprite {
+	public class CutieManager {
 		private var maxBlocksX:int;
 		private var maxBlocksY:int;
 		private var maxBlocksZ:int;
