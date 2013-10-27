@@ -2,6 +2,7 @@ package com.stichoza.cutiecrawler {
 	import com.stichoza.cutiecrawler.cuteplanet.AbstractCutem;
 	import flash.display.Sprite;
 	import flash.display.DisplayObject;
+	import flash.display.MovieClip;
 	
 	/**
 	 * ...
@@ -44,8 +45,8 @@ package com.stichoza.cutiecrawler {
 				return 3;
 			}
 			objectMatrix[x][y][z] = obj;
-			addChild(objectMatrix[x][y][z]);
-			obj.locate(x, y, z);
+			addChild(objectMatrix[x][y][z]); // TODO: add to stage not somewhere in the fuck
+			objectMatrix[x][y][z].locate(x, y, z);
 			return 0;
 		}
 		
