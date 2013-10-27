@@ -1,5 +1,4 @@
-package com.stichoza.cutiecrawler
-{
+package com.stichoza.cutiecrawler {
 	import com.stichoza.cutiecrawler.cuteplanet.AbstractCutem;
 	import flash.desktop.NativeApplication;
 	import flash.events.Event;
@@ -13,12 +12,10 @@ package com.stichoza.cutiecrawler
 	 * ...
 	 * @author Stichoza
 	 */
-	public class Main extends Sprite
-	{
+	public class Main extends Sprite {
 		protected var cMatrix:CutieManager;
 		
-		public function Main():void
-		{
+		public function Main():void {
 			stage.scaleMode = StageScaleMode.SHOW_ALL;
 			stage.align = StageAlign.BOTTOM;
 			stage.addEventListener(Event.DEACTIVATE, deactivate);
@@ -26,18 +23,14 @@ package com.stichoza.cutiecrawler
 			// touch or gesture?
 			Multitouch.inputMode = MultitouchInputMode.TOUCH_POINT;
 			
-			if (stage)
-			{
+			if (stage) {
 				init();
-			}
-			else
-			{
+			} else {
 				addEventListener(Event.ADDED_TO_STAGE, init);
 			}
 		}
 		
-		private function init(e:Event = null):void
-		{
+		private function init(e:Event = null):void {
 			removeEventListener(Event.ADDED_TO_STAGE, init);
 			// entry point
 			cMatrix = new CutieManager(stage.stageWidth, stage.stageHeight);
@@ -49,31 +42,30 @@ package com.stichoza.cutiecrawler
 			stageRect.x = stageRect.y = 0;
 			trace(stage.stageWidth);
 			// cutie tests
-			var w1:AbstractCutem = new AbstractCutem("aa");
+			var w1:AbstractCutem = new AbstractCutem("ManualCutie");
 			addChild(w1);
 			w1.locate(0, 1, 0);
 			
-			
-			
-			/*var w2:AbstractCutem = new AbstractCutem("aa");
-			addChild(w2);
-			w2.locate(3, 3, 0);
-			var w3:AbstractCutem = new AbstractCutem("aa");
-			addChild(w3);
-			w3.locate(2, 2, 0);
-			var w4:AbstractCutem = new AbstractCutem("aa");
-			addChild(w4);
-			w4.locate(3, 2, 0);
-			var w5:AbstractCutem = new AbstractCutem("aa");
-			addChild(w5);
-			w5.locate(0, 1, 1);
-			var w6:AbstractCutem = new AbstractCutem("aa");
-			addChild(w6);
-			w6.locate(3, 2, 1);*/
+			cMatrix.newCutie("CutieFromCode", 3, 1, 0);
+		
+		/*var w2:AbstractCutem = new AbstractCutem("aa");
+		   addChild(w2);
+		   w2.locate(3, 3, 0);
+		   var w3:AbstractCutem = new AbstractCutem("aa");
+		   addChild(w3);
+		   w3.locate(2, 2, 0);
+		   var w4:AbstractCutem = new AbstractCutem("aa");
+		   addChild(w4);
+		   w4.locate(3, 2, 0);
+		   var w5:AbstractCutem = new AbstractCutem("aa");
+		   addChild(w5);
+		   w5.locate(0, 1, 1);
+		   var w6:AbstractCutem = new AbstractCutem("aa");
+		   addChild(w6);
+		 w6.locate(3, 2, 1);*/
 		}
 		
-		private function deactivate(e:Event):void
-		{
+		private function deactivate(e:Event):void {
 			//NativeApplication.nativeApplication.exit(); // exit on minimize
 			// TODO: do not exit, just pause game
 		}

@@ -50,7 +50,7 @@
 		<content>CutieCrawler.swf</content>
 		<visible>true</visible>
 		<fullScreen>true</fullScreen>
-		<!--<autoOrients>false</autoOrients>-->
+		<autoOrients>false</autoOrients>
 		<!--<aspectRatio>landscape</aspectRatio>-->
 		<renderMode>direct</renderMode>
 		<!--<depthAndStencil>true</depthAndStencil>--> <!-- required for 3D -->
