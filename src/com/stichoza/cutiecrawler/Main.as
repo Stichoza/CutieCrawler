@@ -13,6 +13,7 @@ package com.stichoza.cutiecrawler {
 	 * @author Stichoza
 	 */
 	public class Main extends Sprite {
+		
 		protected var cMatrix:CutieManager;
 		
 		public function Main():void {
@@ -40,13 +41,12 @@ package com.stichoza.cutiecrawler {
 			stageRect.graphics.drawRect(1, 1, stage.stageWidth - 2, stage.stageHeight - 2);
 			addChild(stageRect);
 			stageRect.x = stageRect.y = 0;
-			trace(stage.stageWidth);
 			// cutie tests
 			var w1:AbstractCutem = new AbstractCutem("ManualCutie");
 			addChild(w1);
 			w1.locate(0, 1, 0);
 			
-			cMatrix.newCutie("CutieFromCode", 3, 1, 0);
+			cMatrix.newCutie("CutieFromCode", 1, 2, 0);
 		
 		/*var w2:AbstractCutem = new AbstractCutem("aa");
 		   addChild(w2);

@@ -3,6 +3,7 @@ package com.stichoza.cutiecrawler {
 	import flash.display.Sprite;
 	import flash.display.DisplayObject;
 	import flash.display.MovieClip;
+	import flash.display.Stage;
 	
 	/**
 	 * ...
@@ -30,20 +31,23 @@ package com.stichoza.cutiecrawler {
 					}
 				}
 			}
-		
 		}
 		
 		public function newCutie(name:String, x:int, y:int, z:int):int {
 			var obj:AbstractCutem = new AbstractCutem(name);
 			if (!isEmpty(x, y, z)) {
 				// if cell is already taken
+				trace("non-empty cell " + x + "," + y + "," + z);
 				return 1;
 			} else if (z != 0 && isEmpty(x, y, z - 1)) {
 				// if cell has no lower level
+				trace("non-floored cell " + x + "," + y + "," + z);
 				return 2;
 			} else if (z != 0 && !objectMatrix[x][y][z - 1].isBuildable) {
+				trace("non-bulbale cell " + x + "," + y + "," + z);
 				return 3;
 			}
+			trace("creating cutie on " + x + "," + y + "," + z);
 			objectMatrix[x][y][z] = obj;
 			addChild(objectMatrix[x][y][z]); // TODO: add to stage not somewhere in the fuck
 			objectMatrix[x][y][z].locate(x, y, z);
@@ -52,15 +56,13 @@ package com.stichoza.cutiecrawler {
 		
 		public function isEmpty(x:int, y:int, z:int):Boolean {
 			try {
-				return (!objectMatrix[x][y][z].cutieWidth > 1);
+				return (!!!objectMatrix[x][y][z].cutieWidth);
 			} catch (e:Error) {
 				trace("Hey, it's catch from isEmpty(), " + e.message);
-				return true;
 			} finally {
-				trace("Hmmm, weird.");
-				return true;
+				trace(":v");
 			}
-		
+			return true;
 		}
 	
 	}

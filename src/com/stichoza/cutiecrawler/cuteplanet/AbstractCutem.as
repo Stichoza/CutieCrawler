@@ -9,7 +9,7 @@ package com.stichoza.cutiecrawler.cuteplanet {
 	 * @author Stichoza
 	 */
 	public class AbstractCutem extends Sprite {
-		[Embed(source="../../../../../assets/planetcute/DirtBlock.png")] // TODO: deal with embeds
+		[Embed(source="../../../../../assets/planetcute/DirtBlock.png")]
 		
 		private var AbstractCutemClass:Class;
 		private var co:Bitmap = new AbstractCutemClass();
@@ -32,7 +32,7 @@ package com.stichoza.cutiecrawler.cuteplanet {
 		
 		public static const healthMod:int = 0; // if pickable + if healthChanger -> change health by (+/- int)
 		public static const itemName:String = ""; // if pickable + if bagItem -> put in bag
-		public static const damage:int = 0; // TODO: replace with healthMod
+		public static const damage:int = 0; // TODO: replace with healthMod negative
 		
 		public var debugName:String = "untitled";
 		
@@ -48,7 +48,7 @@ package com.stichoza.cutiecrawler.cuteplanet {
 			addEventListener(Event.ADDED_TO_STAGE, init);
 		}
 		
-		public function init(e:Event) {
+		public function init(e:Event):void {
 			removeEventListener(Event.ADDED_TO_STAGE, init);
 			trace("Object " + this.debugName + " added to stage");
 		}
