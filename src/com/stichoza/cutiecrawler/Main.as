@@ -39,46 +39,20 @@ package com.stichoza.cutiecrawler {
 			bgLayer = new BackgroundLayer();
 			addChild(bgLayer);
 			
-			for (var x:int = cMatrix.maxBlocksX - 1; x >= 0; x--) {
-				for (var y:int = cMatrix.maxBlocksY - 1; y >= 0; y--) {
-					//cMatrix.newCutie("flooring", x, y, 0);
+			for (var x:int = 0; x < cMatrix.maxBlocksX; x++) {
+				for (var y:int = 0; y < cMatrix.maxBlocksY; y++) {
+					cMatrix.newCutie("flooring", x, y, 0);
 				}
 			}
 			
-			cMatrix.newCutie("test", 2, 3, 0);
-			cMatrix.newCutie("test", 0, 2, 0);
-			cMatrix.newCutie("test", 0, 1, 0);
-			cMatrix.newCutie("test", 1, 1, 0);
-			cMatrix.newCutie("test", 1, 1, 1);
-			
-			var tmp:AbstractCutem = cMatrix.getObject(2, 3, 0);
-			
-			
-			/*cMatrix.newCutie("CutieFromCode", 1, 3, 0);
-			cMatrix.newCutie("CutieFromCode", 0, 1, 0);
-			cMatrix.newCutie("CutieFromCode", 0, 0, 0);
-			//cMatrix.newCutie("CutieFromCode", cMatrix.maxBlocksX, cMatrix.maxBlocksY, 0);
-			cMatrix.newCutie("CutieFromCode", 2, 2, 0);
-			cMatrix.newCutie("CutieFromCode", 2, 2, 1);
-			cMatrix.newCutie("CutieFromCode", 2, 2, 2);
-			cMatrix.newCutie("CutieFromCode", 3, 2);
-			cMatrix.newCutie("CutieFromCode", 3, 2);*/
-		
-		/*var w2:AbstractCutem = new AbstractCutem("aa");
-		   addChild(w2);
-		   w2.locate(3, 3, 0);
-		   var w3:AbstractCutem = new AbstractCutem("aa");
-		   addChild(w3);
-		   w3.locate(2, 2, 0);
-		   var w4:AbstractCutem = new AbstractCutem("aa");
-		   addChild(w4);
-		   w4.locate(3, 2, 0);
-		   var w5:AbstractCutem = new AbstractCutem("aa");
-		   addChild(w5);
-		   w5.locate(0, 1, 1);
-		   var w6:AbstractCutem = new AbstractCutem("aa");
-		   addChild(w6);
-		 w6.locate(3, 2, 1);*/
+			cMatrix.newCutie("1-1-0", 1, 3);
+			cMatrix.newCutie("1-1-1", 1, 3);
+			cMatrix.newCutie("1-1-1", 1, 3);
+			cMatrix.newCutie("1-1-1", 1, 3);
+
+			//cMatrix.newCutie("CutieFromCode", cMatrix.maxBlocksX, cMatrix.maxBlocksY);
+
+
 		}
 		
 		private function deactivate(e:Event):void {

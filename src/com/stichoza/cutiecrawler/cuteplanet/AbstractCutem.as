@@ -55,7 +55,7 @@ package com.stichoza.cutiecrawler.cuteplanet {
 		
 		public function locate(x:int = 0, y:int = 0, z:int = 0):void {
 			this.x = x * (cutieWidth - 1);
-			this.y = stage.stageHeight - cutieHeightSprite - y * (cutieHeight - cutieThick + 2);
+			this.y = stage.stageHeight - cutieHeightSprite - y * (cutieHeight - cutieThick + 5);
 			this.y -= z * cutieThick;
 			//trace("Location:   " + x + ",\t" + y + ",\t" + z + "\tCoord:   " + this.x + ",\t" + this.y);
 		}

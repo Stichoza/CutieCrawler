@@ -60,22 +60,24 @@ package com.stichoza.cutiecrawler {
 					throw new MatrixError("Z-stack is full", 1);
 				}
 			}
-			
 			if (x >= this.maxBlocksX || y >= this.maxBlocksY || z >= this.maxBlocksZ) {
 				throw new MatrixError("Out of matrix bounds", 2);
-			} else if (!isEmpty(x, y, z)) {
-				throw new MatrixError("Cell not empty", 3);
-			} else if (z > 0 && isEmpty(x, y, z - 1)) {
-				throw new MatrixError("Cell has no lower level block", 4);
-			} else if (z > 0 && !objectMatrix[x][y][z - 1].isBuildable) {
-				throw new MatrixError("Lower level block in not buildable", 5);
-			} else {
-				trace("creating cutie on " + x + "," + y + "," + z);
-				objectMatrix[x][y][z] = obj;
-				this.stageRef.addChild(objectMatrix[x][y][z]);
-				objectMatrix[x][y][z].locate(x, y, z);
-				return 0;
 			}
+			if (!isEmpty(x, y, z)) {
+				throw new MatrixError("Cell not empty", 3);
+			}
+			if (z > 0 && isEmpty(x, y, z - 1)) {
+				throw new MatrixError("Cell has no lower level block", 4);
+			}
+			if (z > 0 && !objectMatrix[x][y][z - 1].isBuildable) {
+				throw new MatrixError("Lower level block in not buildable", 5);
+			}
+			
+			trace("creating cutie on " + x + "," + y + "," + z);
+			objectMatrix[x][y][z] = obj;
+			this.stageRef.addChild(objectMatrix[x][y][z]);
+			objectMatrix[x][y][z].locate(x, y, z);
+			return 0;
 			
 		}
 		
@@ -84,13 +86,16 @@ package com.stichoza.cutiecrawler {
 			try {
 				var tmpObj:AbstractCutem = this.objectMatrix[x][y][z];
 				result = !(tmpObj.debugName);
+				trace(tmpObj.debugName + " -- " + result);
 				//result = (this.objectMatrix[x][y][z] != null);
 			} catch (e:Error) {
-				// trace(e.message);
-			} finally {
 				result = true;
 			}
 			return result;
+		}
+		
+		public function sortLayers():void {
+			
 		}
 		
 		public function getObject(x:int, y:int, z:int):AbstractCutem {

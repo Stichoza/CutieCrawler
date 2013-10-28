@@ -4,7 +4,9 @@ call bat\SetupSDK.bat
 call bat\SetupApplication.bat
 
 :target
-goto desktop
+set /p RUNTO=Run on Device? (y/n) 
+if %RUNTO% == y goto android-debug ELSE goto desktop
+::goto desktop
 ::goto android-debug
 ::goto android-test
 set INTERPRETER=-interpreter
