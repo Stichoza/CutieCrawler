@@ -10,9 +10,9 @@ package com.stichoza.cutiecrawler {
 	 * @author Stichoza
 	 */
 	public class CutieManager {
-		private var maxBlocksX:int;
-		private var maxBlocksY:int;
-		private var maxBlocksZ:int;
+		public var maxBlocksX:int;
+		public var maxBlocksY:int;
+		public var maxBlocksZ:int;
 		
 		private var objectMatrix:Array;
 		
@@ -22,20 +22,24 @@ package com.stichoza.cutiecrawler {
 			this.stageRef = fakeStage;
 			var screenWidth:int = fakeStage.stageWidth;
 			var screenHeight:int = fakeStage.stageHeight;
-			maxBlocksX = screenWidth / AbstractCutem.cutieWidth;
-			maxBlocksY = screenHeight / AbstractCutem.cutieHeight;
+			maxBlocksX = screenWidth / AbstractCutem.cutieWidth + 1;
+			maxBlocksY = screenHeight / (AbstractCutem.cutieHeight - AbstractCutem.cutieThick);
 			maxBlocksZ = 5;
-			
 			this.objectMatrix = new Array(this.maxBlocksX);
-			for (var x:int = 0; x < maxBlocksX; x++) {
+			for (var x:int = 0; x <= maxBlocksX; x++) {
 				this.objectMatrix[x] = new Array(this.maxBlocksY);
-				for (var y:int = 0; y < maxBlocksY; y++) {
+				for (var y:int = 0; y <= maxBlocksY; y++) {
 					this.objectMatrix[x][y] = new Array(this.maxBlocksZ);
-					for (var z:int = 0; z < maxBlocksZ; z++) {
+					for (var z:int = 0; z <= maxBlocksZ; z++) {
 						this.objectMatrix[x][y][z] = null;
+						trace("x:"+x+" y:"+y+" z:"+z);
 					}
 				}
 			}
+			trace("CutieManager instance");
+			trace("W:" + screenWidth + "\tH:" + screenHeight);
+			trace("mX:" + maxBlocksX + "\tmY:" + maxBlocksY + "\tmZ:" + maxBlocksZ);
+			trace("aX:" + maxBlocksX + "\taY:" + maxBlocksY + "\taZ:" + maxBlocksZ);
 		}
 		
 		public function newCutie(name:String, x:int, y:int, z:int = -1):int {
@@ -61,11 +65,13 @@ package com.stichoza.cutiecrawler {
 				// if cell is already taken
 				trace("non-empty cell\t" + x + "," + y + "," + z);
 				return 1;
-			} else if (z > 0 && isEmpty(x, y, z - 1)) {
+			}
+			if (z > 0 && isEmpty(x, y, z - 1)) {
 				// if cell has no lower level
 				trace("non-floored cell\t" + x + "," + y + "," + z);
 				return 2;
-			} else if (z > 0 && !objectMatrix[x][y][z - 1].isBuildable) {
+			}
+			if (z > 0 && !objectMatrix[x][y][z - 1].isBuildable) {
 				trace("non-bulbale cell\t" + x + "," + y + "," + z);
 				return 3;
 			}
@@ -81,7 +87,7 @@ package com.stichoza.cutiecrawler {
 			var result:Boolean = true;
 			try {
 				//result = !(this.objectMatrix[x][y][z] is AbstractCutem);
-				result = (this.objectMatrix[x][y][z] !== null);
+				result = (this.objectMatrix[x][y][z] != null);
 			} catch (e:Error) {
 				// trace(e.message);
 			} finally {

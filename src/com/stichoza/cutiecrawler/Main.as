@@ -5,10 +5,8 @@ package com.stichoza.cutiecrawler {
 	import flash.display.Sprite;
 	import flash.display.StageAlign;
 	import flash.display.StageScaleMode;
-	import flash.geom.Matrix;
 	import flash.ui.Multitouch;
 	import flash.ui.MultitouchInputMode;
-	import flash.display.GradientType;
 	
 	/**
 	 * ...
@@ -17,9 +15,10 @@ package com.stichoza.cutiecrawler {
 	public class Main extends Sprite {
 		
 		protected var cMatrix:CutieManager;
+		protected var bgLayer:BackgroundLayer;
 		
 		public function Main():void {
-			stage.scaleMode = StageScaleMode.SHOW_ALL;
+			stage.scaleMode = StageScaleMode.NO_SCALE;
 			stage.align = StageAlign.BOTTOM_LEFT;
 			stage.addEventListener(Event.DEACTIVATE, deactivate);
 			
@@ -37,25 +36,26 @@ package com.stichoza.cutiecrawler {
 			removeEventListener(Event.ADDED_TO_STAGE, init);
 			// entry point
 			cMatrix = new CutieManager(stage);
-			var stageRect:Sprite = new Sprite();
-			stageRect.graphics.lineStyle(1, 0x00FF00);
-			var matr:Matrix = new Matrix();
-			matr.createGradientBox(stage.stageWidth + 200, stage.stageHeight + 200, Math.PI / 2);
-			stageRect.graphics.beginGradientFill(GradientType.LINEAR, [0x5080D9, 0xE5E9FF], [1, 0.75], [0, 255], matr);
-			stageRect.graphics.drawRect(-100, -100, stage.stageWidth + 200, stage.stageHeight + 200);
-			addChild(stageRect);
-			//stageRect.x = stageRect.y = 0;
-			// cutie tests
+			bgLayer = new BackgroundLayer();
+			addChild(bgLayer);
+			
+			for (var x:int = cMatrix.maxBlocksX - 1; x >= 0; x--) {
+				for (var y:int = cMatrix.maxBlocksY - 1; y >= 0; y--) {
+					//cMatrix.newCutie("flooring", x, y, 0);
+				}
+			}
+			
+			cMatrix.newCutie("test", 2, 3, 0);
 			
 			/*cMatrix.newCutie("CutieFromCode", 1, 3, 0);
 			cMatrix.newCutie("CutieFromCode", 0, 1, 0);
 			cMatrix.newCutie("CutieFromCode", 0, 0, 0);
-			cMatrix.newCutie("CutieFromCode", 1, 2, 0);
+			//cMatrix.newCutie("CutieFromCode", cMatrix.maxBlocksX, cMatrix.maxBlocksY, 0);
 			cMatrix.newCutie("CutieFromCode", 2, 2, 0);
 			cMatrix.newCutie("CutieFromCode", 2, 2, 1);
-			cMatrix.newCutie("CutieFromCode", 2, 2, 2);*/
+			cMatrix.newCutie("CutieFromCode", 2, 2, 2);
 			cMatrix.newCutie("CutieFromCode", 3, 2);
-			cMatrix.newCutie("CutieFromCode", 3, 2);
+			cMatrix.newCutie("CutieFromCode", 3, 2);*/
 		
 		/*var w2:AbstractCutem = new AbstractCutem("aa");
 		   addChild(w2);
