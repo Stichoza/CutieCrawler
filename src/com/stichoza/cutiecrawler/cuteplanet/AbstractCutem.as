@@ -37,6 +37,7 @@ package com.stichoza.cutiecrawler.cuteplanet {
 		public var debugName:String = "untitled";
 		
 		public function AbstractCutem(name:String, x:int = 0, y:int = 0, z:int = 0) {
+			
 			this.width = AbstractCutemClass.cutieWidthSprite;
 			this.height = AbstractCutemClass.cutieHeightSprite;
 			this.debugName = name;

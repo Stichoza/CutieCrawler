@@ -1,9 +1,6 @@
 package com.stichoza.cutiecrawler {
 	import com.stichoza.cutiecrawler.cuteplanet.AbstractCutem;
 	import com.stichoza.cutiecrawler.error.MatrixError;
-	import flash.display.Sprite;
-	import flash.display.DisplayObject;
-	import flash.display.MovieClip;
 	import flash.display.Stage;
 	
 	/**
@@ -27,13 +24,13 @@ package com.stichoza.cutiecrawler {
 			maxBlocksY = screenHeight / (AbstractCutem.cutieHeight - AbstractCutem.cutieThick);
 			maxBlocksZ = 5;
 			this.objectMatrix = new Array(this.maxBlocksX);
-			for (var x:int = 0; x <= maxBlocksX; x++) {
+			for (var x:int = 0; x < maxBlocksX; x++) {
 				this.objectMatrix[x] = new Array(this.maxBlocksY);
-				for (var y:int = 0; y <= maxBlocksY; y++) {
+				for (var y:int = 0; y < maxBlocksY; y++) {
 					this.objectMatrix[x][y] = new Array(this.maxBlocksZ);
-					for (var z:int = 0; z <= maxBlocksZ; z++) {
+					for (var z:int = 0; z < maxBlocksZ; z++) {
 						this.objectMatrix[x][y][z];
-						trace("x:"+x+" y:"+y+" z:"+z);
+						trace("x:" + x + " y:" + y + " z:" + z);
 					}
 				}
 			}
@@ -78,7 +75,7 @@ package com.stichoza.cutiecrawler {
 			this.stageRef.addChild(objectMatrix[x][y][z]);
 			objectMatrix[x][y][z].locate(x, y, z);
 			return 0;
-			
+		
 		}
 		
 		public function isEmpty(x:int, y:int, z:int):Boolean {
@@ -87,7 +84,7 @@ package com.stichoza.cutiecrawler {
 				var tmpObj:AbstractCutem = this.objectMatrix[x][y][z];
 				result = !(tmpObj.debugName);
 				trace(tmpObj.debugName + " -- " + result);
-				//result = (this.objectMatrix[x][y][z] != null);
+					//result = (this.objectMatrix[x][y][z] != null);
 			} catch (e:Error) {
 				result = true;
 			}
@@ -95,7 +92,30 @@ package com.stichoza.cutiecrawler {
 		}
 		
 		public function sortLayers():void {
-			
+			var tmpObj:AbstractCutem;
+			var setIndex:Boolean;
+			var index:int = 0;
+			for (var x:int = 0; x < maxBlocksX; x++) {
+				for (var y:int = maxBlocksY; y >= 0; y--) {
+					for (var z:int = 0; z < maxBlocksZ; z++) {
+						setIndex = true;
+						try {
+							tmpObj = this.objectMatrix[x][y][z];
+							trace(tmpObj.debugName);
+						} catch (e:RangeError) {
+							trace("Matrix array index out of bounds");
+							setIndex = false;
+							continue
+						} catch (e:Error) {
+							trace("Other error");
+							setIndex = false;
+							continue;
+						}
+						if (setIndex)
+							this.stageRef.setChildIndex(this.objectMatrix[x][y][z], ++index);
+					}
+				}
+			}
 		}
 		
 		public function getObject(x:int, y:int, z:int):AbstractCutem {

@@ -50,6 +50,8 @@ package com.stichoza.cutiecrawler {
 			cMatrix.newCutie("1-1-1", 1, 3);
 			cMatrix.newCutie("1-1-1", 1, 3);
 
+			cMatrix.sortLayers();
+			
 			//cMatrix.newCutie("CutieFromCode", cMatrix.maxBlocksX, cMatrix.maxBlocksY);
 
 

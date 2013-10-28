@@ -9,7 +9,7 @@ package com.stichoza.cutiecrawler.cuteplanet
 		
 		public function BrownBlock() 
 		{
-			
+			//[Embed(source="../../../../../assets/planetcute/GrassBlock.png")]
 		}
 		
 	}
