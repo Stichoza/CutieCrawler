@@ -46,6 +46,13 @@ package com.stichoza.cutiecrawler {
 			}
 			
 			cMatrix.newCutie("test", 2, 3, 0);
+			cMatrix.newCutie("test", 0, 2, 0);
+			cMatrix.newCutie("test", 0, 1, 0);
+			cMatrix.newCutie("test", 1, 1, 0);
+			cMatrix.newCutie("test", 1, 1, 1);
+			
+			var tmp:AbstractCutem = cMatrix.getObject(2, 3, 0);
+			
 			
 			/*cMatrix.newCutie("CutieFromCode", 1, 3, 0);
 			cMatrix.newCutie("CutieFromCode", 0, 1, 0);

@@ -21,18 +21,18 @@ package com.stichoza.cutiecrawler.cuteplanet {
 		public static const cutieThick:int = 42;
 		public static const cutieThickFactor:int = 1; // 1:normal, 2:tall
 		
-		public static const isBuildable:Boolean = true;
-		public static const isStandable:Boolean = true;
-		public static const isPickable:Boolean = false;
-		public static const isAttackable:Boolean = false;
+		public const isBuildable:Boolean = true;
+		public const isStandable:Boolean = true;
+		public const isPickable:Boolean = false;
+		public const isAttackable:Boolean = false;
 		
-		public static const isHealthChanger:Boolean = false;
-		public static const isTimeChanger:Boolean = false;
-		public static const isBagItem:Boolean = false;
+		public const isHealthChanger:Boolean = false;
+		public const isTimeChanger:Boolean = false;
+		public const isBagItem:Boolean = false;
 		
-		public static const healthMod:int = 0; // if pickable + if healthChanger -> change health by (+/- int)
-		public static const itemName:String = ""; // if pickable + if bagItem -> put in bag
-		public static const damage:int = 0; // TODO: replace with healthMod negative
+		public const healthMod:int = 0; // if pickable + if healthChanger -> change health by (+/- int)
+		public const itemName:String = ""; // if pickable + if bagItem -> put in bag
+		public const damage:int = 0; // TODO: replace with healthMod negative
 		
 		public var debugName:String = "untitled";
 		
@@ -40,10 +40,10 @@ package com.stichoza.cutiecrawler.cuteplanet {
 			this.width = AbstractCutemClass.cutieWidthSprite;
 			this.height = AbstractCutemClass.cutieHeightSprite;
 			this.debugName = name;
-			co.width = cutieWidthSprite;
-			co.height = cutieHeightSprite;
-			co.x = 0;
-			co.y = 0;
+			this.co.width = cutieWidthSprite;
+			this.co.height = cutieHeightSprite;
+			this.co.x = 0;
+			this.co.y = 0;
 			addChild(co);
 			addEventListener(Event.ADDED_TO_STAGE, init);
 		}
@@ -58,6 +58,11 @@ package com.stichoza.cutiecrawler.cuteplanet {
 			this.y = stage.stageHeight - cutieHeightSprite - y * (cutieHeight - cutieThick + 2);
 			this.y -= z * cutieThick;
 			//trace("Location:   " + x + ",\t" + y + ",\t" + z + "\tCoord:   " + this.x + ",\t" + this.y);
+		}
+		
+		public function locateAbsolute(x:Number, y:Number):void {
+			this.x = x;
+			this.y = y;
 		}
 	
 	}

@@ -1,5 +1,6 @@
 package com.stichoza.cutiecrawler {
 	import com.stichoza.cutiecrawler.cuteplanet.AbstractCutem;
+	import com.stichoza.cutiecrawler.error.MatrixError;
 	import flash.display.Sprite;
 	import flash.display.DisplayObject;
 	import flash.display.MovieClip;
@@ -31,7 +32,7 @@ package com.stichoza.cutiecrawler {
 				for (var y:int = 0; y <= maxBlocksY; y++) {
 					this.objectMatrix[x][y] = new Array(this.maxBlocksZ);
 					for (var z:int = 0; z <= maxBlocksZ; z++) {
-						this.objectMatrix[x][y][z] = null;
+						this.objectMatrix[x][y][z];
 						trace("x:"+x+" y:"+y+" z:"+z);
 					}
 				}
@@ -56,44 +57,50 @@ package com.stichoza.cutiecrawler {
 					}
 				}
 				if (z < 0) {
-					trace("Column is full");
-					return 4; // column is full
+					throw new MatrixError("Z-stack is full", 1);
 				}
 			}
 			
-			if (!isEmpty(x, y, z)) {
-				// if cell is already taken
-				trace("non-empty cell\t" + x + "," + y + "," + z);
-				return 1;
-			}
-			if (z > 0 && isEmpty(x, y, z - 1)) {
-				// if cell has no lower level
-				trace("non-floored cell\t" + x + "," + y + "," + z);
-				return 2;
-			}
-			if (z > 0 && !objectMatrix[x][y][z - 1].isBuildable) {
-				trace("non-bulbale cell\t" + x + "," + y + "," + z);
-				return 3;
+			if (x >= this.maxBlocksX || y >= this.maxBlocksY || z >= this.maxBlocksZ) {
+				throw new MatrixError("Out of matrix bounds", 2);
+			} else if (!isEmpty(x, y, z)) {
+				throw new MatrixError("Cell not empty", 3);
+			} else if (z > 0 && isEmpty(x, y, z - 1)) {
+				throw new MatrixError("Cell has no lower level block", 4);
+			} else if (z > 0 && !objectMatrix[x][y][z - 1].isBuildable) {
+				throw new MatrixError("Lower level block in not buildable", 5);
+			} else {
+				trace("creating cutie on " + x + "," + y + "," + z);
+				objectMatrix[x][y][z] = obj;
+				this.stageRef.addChild(objectMatrix[x][y][z]);
+				objectMatrix[x][y][z].locate(x, y, z);
+				return 0;
 			}
 			
-			trace("creating cutie on " + x + "," + y + "," + z);
-			objectMatrix[x][y][z] = obj;
-			this.stageRef.addChild(objectMatrix[x][y][z]);
-			objectMatrix[x][y][z].locate(x, y, z);
-			return 0;
 		}
 		
 		public function isEmpty(x:int, y:int, z:int):Boolean {
 			var result:Boolean = true;
 			try {
-				//result = !(this.objectMatrix[x][y][z] is AbstractCutem);
-				result = (this.objectMatrix[x][y][z] != null);
+				var tmpObj:AbstractCutem = this.objectMatrix[x][y][z];
+				result = !(tmpObj.debugName);
+				//result = (this.objectMatrix[x][y][z] != null);
 			} catch (e:Error) {
 				// trace(e.message);
 			} finally {
 				result = true;
 			}
 			return result;
+		}
+		
+		public function getObject(x:int, y:int, z:int):AbstractCutem {
+			var obj:AbstractCutem;
+			try {
+				obj = this.objectMatrix[x][y][z];
+			} catch (e:Error) {
+				trace(e.message);
+			}
+			return obj;
 		}
 	
 	}

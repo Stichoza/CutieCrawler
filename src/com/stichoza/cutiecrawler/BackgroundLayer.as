@@ -13,9 +13,9 @@ package com.stichoza.cutiecrawler
 		private var bgRectingle:Sprite = new Sprite();
 		private var bgMatrix:Matrix = new Matrix();
 		private var gradRotation:Number = Math.PI / 2;
-		private var colors:Array = [0x5080D9, 0xE5E9FF];
-		private var alphas:Array = [1, 0.75];
-		private var ratios:Array = [0, 255];
+		private var colors:Array = [0x5080D9, 0xE5E9FF, 0x552000, 0x000000];
+		private var alphas:Array = [1, 1, 0.8, 1];
+		private var ratios:Array = [0, 127, 127, 255];
 		
 		public function BackgroundLayer() 
 		{
