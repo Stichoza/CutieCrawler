@@ -5,8 +5,10 @@ package com.stichoza.cutiecrawler {
 	import flash.display.Sprite;
 	import flash.display.StageAlign;
 	import flash.display.StageScaleMode;
+	import flash.geom.Matrix;
 	import flash.ui.Multitouch;
 	import flash.ui.MultitouchInputMode;
+	import flash.display.GradientType;
 	
 	/**
 	 * ...
@@ -18,7 +20,7 @@ package com.stichoza.cutiecrawler {
 		
 		public function Main():void {
 			stage.scaleMode = StageScaleMode.SHOW_ALL;
-			stage.align = StageAlign.BOTTOM;
+			stage.align = StageAlign.BOTTOM_LEFT;
 			stage.addEventListener(Event.DEACTIVATE, deactivate);
 			
 			// touch or gesture?
@@ -37,16 +39,23 @@ package com.stichoza.cutiecrawler {
 			cMatrix = new CutieManager(stage);
 			var stageRect:Sprite = new Sprite();
 			stageRect.graphics.lineStyle(1, 0x00FF00);
-			stageRect.graphics.beginFill(0xFF00FF);
-			stageRect.graphics.drawRect(1, 1, stage.stageWidth - 2, stage.stageHeight - 2);
+			var matr:Matrix = new Matrix();
+			matr.createGradientBox(stage.stageWidth + 200, stage.stageHeight + 200, Math.PI / 2);
+			stageRect.graphics.beginGradientFill(GradientType.LINEAR, [0x5080D9, 0xE5E9FF], [1, 0.75], [0, 255], matr);
+			stageRect.graphics.drawRect(-100, -100, stage.stageWidth + 200, stage.stageHeight + 200);
 			addChild(stageRect);
-			stageRect.x = stageRect.y = 0;
+			//stageRect.x = stageRect.y = 0;
 			// cutie tests
-			var w1:AbstractCutem = new AbstractCutem("ManualCutie");
-			addChild(w1);
-			w1.locate(0, 1, 0);
 			
+			/*cMatrix.newCutie("CutieFromCode", 1, 3, 0);
+			cMatrix.newCutie("CutieFromCode", 0, 1, 0);
+			cMatrix.newCutie("CutieFromCode", 0, 0, 0);
 			cMatrix.newCutie("CutieFromCode", 1, 2, 0);
+			cMatrix.newCutie("CutieFromCode", 2, 2, 0);
+			cMatrix.newCutie("CutieFromCode", 2, 2, 1);
+			cMatrix.newCutie("CutieFromCode", 2, 2, 2);*/
+			cMatrix.newCutie("CutieFromCode", 3, 2);
+			cMatrix.newCutie("CutieFromCode", 3, 2);
 		
 		/*var w2:AbstractCutem = new AbstractCutem("aa");
 		   addChild(w2);

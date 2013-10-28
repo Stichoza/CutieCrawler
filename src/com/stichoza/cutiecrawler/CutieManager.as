@@ -32,42 +32,62 @@ package com.stichoza.cutiecrawler {
 				for (var y:int = 0; y < maxBlocksY; y++) {
 					this.objectMatrix[x][y] = new Array(this.maxBlocksZ);
 					for (var z:int = 0; z < maxBlocksZ; z++) {
-						this.objectMatrix[x][y][z] = new Sprite();
+						this.objectMatrix[x][y][z] = null;
 					}
 				}
 			}
 		}
 		
-		public function newCutie(name:String, x:int, y:int, z:int):int {
+		public function newCutie(name:String, x:int, y:int, z:int = -1):int {
+			
 			var obj:AbstractCutem = new AbstractCutem(name);
+			
+			if (z < 0) {
+				trace("finding first empty Z index for " + x + "," + y);
+				for (var i:int = 0; i < this.maxBlocksZ; i++) {
+					if (isEmpty(x, y, i)) {
+						trace("found Z: " + i);
+						z = i;
+						break;
+					}
+				}
+				if (z < 0) {
+					trace("Column is full");
+					return 4; // column is full
+				}
+			}
+			
 			if (!isEmpty(x, y, z)) {
 				// if cell is already taken
-				trace("non-empty cell " + x + "," + y + "," + z);
+				trace("non-empty cell\t" + x + "," + y + "," + z);
 				return 1;
-			} else if (z != 0 && isEmpty(x, y, z - 1)) {
+			} else if (z > 0 && isEmpty(x, y, z - 1)) {
 				// if cell has no lower level
-				trace("non-floored cell " + x + "," + y + "," + z);
+				trace("non-floored cell\t" + x + "," + y + "," + z);
 				return 2;
-			} else if (z != 0 && !objectMatrix[x][y][z - 1].isBuildable) {
-				trace("non-bulbale cell " + x + "," + y + "," + z);
+			} else if (z > 0 && !objectMatrix[x][y][z - 1].isBuildable) {
+				trace("non-bulbale cell\t" + x + "," + y + "," + z);
 				return 3;
 			}
+			
 			trace("creating cutie on " + x + "," + y + "," + z);
 			objectMatrix[x][y][z] = obj;
-			this.stageRef.addChild(objectMatrix[x][y][z]); // TODO: add to stage not somewhere in the fuck
+			this.stageRef.addChild(objectMatrix[x][y][z]);
 			objectMatrix[x][y][z].locate(x, y, z);
 			return 0;
 		}
 		
 		public function isEmpty(x:int, y:int, z:int):Boolean {
+			var result:Boolean = true;
 			try {
-				return (!!!objectMatrix[x][y][z].cutieWidth);
+				//result = !(this.objectMatrix[x][y][z] is AbstractCutem);
+				result = (this.objectMatrix[x][y][z] !== null);
 			} catch (e:Error) {
-				trace("Hey, it's catch from isEmpty(), " + e.message);
+				// trace(e.message);
 			} finally {
-				trace(":v");
+				result = true;
 			}
-			return true;
+			return result;
 		}
 	
 	}
