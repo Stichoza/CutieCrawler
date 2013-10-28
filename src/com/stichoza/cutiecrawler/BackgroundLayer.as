@@ -14,15 +14,15 @@ package com.stichoza.cutiecrawler
 		private var bgMatrix:Matrix = new Matrix();
 		private var gradRotation:Number = Math.PI / 2;
 		private var colors:Array = [0x5080D9, 0xE5E9FF];
-		private var alphas:Array = [0, 255];
-		private var ratios:Array = [1, 0.75];
+		private var alphas:Array = [1, 0.75];
+		private var ratios:Array = [0, 255];
 		
 		public function BackgroundLayer() 
 		{
 			addEventListener(Event.ADDED_TO_STAGE, init);
 		}
 		
-		private function init(e:Event) {
+		private function init(e:Event):void {
 			removeEventListener(Event.ADDED_TO_STAGE, init);
 			// init
 			this.bgMatrix.createGradientBox(stage.stageWidth + 200, stage.stageHeight + 200, this.gradRotation);
