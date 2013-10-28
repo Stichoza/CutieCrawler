@@ -1,4 +1,5 @@
 package com.stichoza.cutiecrawler {
+	import com.stichoza.ads.GoogleAdmob;
 	import com.stichoza.cutiecrawler.cuteplanet.AbstractCutem;
 	import flash.desktop.NativeApplication;
 	import flash.events.Event;
@@ -35,6 +36,7 @@ package com.stichoza.cutiecrawler {
 		private function init(e:Event = null):void {
 			removeEventListener(Event.ADDED_TO_STAGE, init);
 			// entry point
+			var admib:GoogleAdmob = new GoogleAdmob();
 			cMatrix = new CutieManager(stage);
 			bgLayer = new BackgroundLayer();
 			addChild(bgLayer);
@@ -49,12 +51,11 @@ package com.stichoza.cutiecrawler {
 			cMatrix.newCutie("1-1-1", 1, 3);
 			cMatrix.newCutie("1-1-1", 1, 3);
 			cMatrix.newCutie("1-1-1", 1, 3);
-
-			cMatrix.sortLayers();
 			
+			cMatrix.sortLayers();
+		
 			//cMatrix.newCutie("CutieFromCode", cMatrix.maxBlocksX, cMatrix.maxBlocksY);
-
-
+		
 		}
 		
 		private function deactivate(e:Event):void {

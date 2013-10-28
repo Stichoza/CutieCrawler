@@ -2,6 +2,7 @@ package com.stichoza.cutiecrawler {
 	import com.stichoza.cutiecrawler.cuteplanet.AbstractCutem;
 	import com.stichoza.cutiecrawler.error.MatrixError;
 	import flash.display.Stage;
+	import flash.system.Capabilities;
 	
 	/**
 	 * ...
@@ -18,8 +19,8 @@ package com.stichoza.cutiecrawler {
 		
 		public function CutieManager(fakeStage:Stage) {
 			this.stageRef = fakeStage;
-			var screenWidth:int = fakeStage.stageWidth;
-			var screenHeight:int = fakeStage.stageHeight;
+			var screenWidth:int = Capabilities.screenResolutionX;
+			var screenHeight:int = Capabilities.screenResolutionY;
 			maxBlocksX = screenWidth / AbstractCutem.cutieWidth + 1;
 			maxBlocksY = screenHeight / (AbstractCutem.cutieHeight - AbstractCutem.cutieThick);
 			maxBlocksZ = 5;
