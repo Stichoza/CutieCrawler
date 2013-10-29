@@ -1,4 +1,5 @@
 package com.stichoza.ads {
+	import com.hdi.nativeExtensions.NativeAdsEvent;
 	import com.hdi.nativeExtensions.NativeAds;
 	import flash.system.Capabilities;
 	

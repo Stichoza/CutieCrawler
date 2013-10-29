@@ -105,6 +105,6 @@ echo.
 echo Installing the app on the device failed
 
 :end
-ping localhost -n 1 > nul
+ping localhost > nul
 exit
 pause
