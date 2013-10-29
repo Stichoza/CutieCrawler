@@ -1,7 +1,6 @@
 package com.stichoza.ads {
-	import flash.system.Capabilities;
 	import com.hdi.nativeExtensions.NativeAds;
-	import com.hdi.nativeExtensions.NativeAdsEvent;
+	import flash.system.Capabilities;
 	
 	/**
 	 * ...
@@ -21,8 +20,8 @@ package com.stichoza.ads {
 			this.adUnitID = adUnitID;
 			this.adWidth = (this.screenWidth >= 480) ? 480 : 320;
 			this.adHeight = (this.adWidth == 480) ? 75 : 50;
-			this.adPositionX = 20;//(this.screenWidth - this.adWidth) / 2;
-			this.adPositionY = 20;// this.screenHeight - this.adHeight - 50;
+			this.adPositionX = (this.screenWidth - this.adWidth) / 2;
+			this.adPositionY = this.screenHeight - this.adHeight - 50;
 			
 			NativeAds.setUnitId(this.adUnitID);
 			NativeAds.setAdMode(true);

@@ -36,14 +36,14 @@ package com.stichoza.cutiecrawler {
 		private function init(e:Event = null):void {
 			removeEventListener(Event.ADDED_TO_STAGE, init);
 			// entry point
-			var admib:GoogleAdmob = new GoogleAdmob();
+			var admob:GoogleAdmob = new GoogleAdmob();
 			cMatrix = new CutieManager(stage);
 			bgLayer = new BackgroundLayer();
 			addChild(bgLayer);
 			
 			for (var x:int = 0; x < cMatrix.maxBlocksX; x++) {
 				for (var y:int = 0; y < cMatrix.maxBlocksY; y++) {
-					cMatrix.newCutie("flooring", x, y, 0);
+					//cMatrix.newCutie("flooring", x, y, 0);
 				}
 			}
 			
