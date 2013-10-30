@@ -18,6 +18,7 @@ package com.stichoza.ads {
 		private var adPositionY:Number = 20;
 		
 		public function GoogleAdmob(adUnitID:String = "a150638d8cbb659") {
+			trace(this.screenHeight + " " +this.screenWidth);
 			this.adUnitID = adUnitID;
 			this.adWidth = (this.screenWidth >= 480) ? 480 : 320;
 			this.adHeight = (this.adWidth == 480) ? 75 : 50;

@@ -47,7 +47,7 @@ package com.stichoza.cutiecrawler {
 				}
 			}
 			
-			cMatrix.newCutie("1-1-0", 1, 3);
+			cMatrix.newCutie("1-1-0", 0, 0);
 			cMatrix.newCutie("1-1-1", 1, 3);
 			cMatrix.newCutie("1-1-1", 1, 3);
 			cMatrix.newCutie("1-1-1", 1, 3);
