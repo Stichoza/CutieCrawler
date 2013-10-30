@@ -6,8 +6,10 @@ package com.stichoza.cutiecrawler {
 	import flash.display.Sprite;
 	import flash.display.StageAlign;
 	import flash.display.StageScaleMode;
+	import flash.text.TextField;
 	import flash.ui.Multitouch;
 	import flash.ui.MultitouchInputMode;
+	import flash.system.Capabilities;
 	
 	/**
 	 * ...
@@ -20,7 +22,7 @@ package com.stichoza.cutiecrawler {
 		
 		public function Main():void {
 			stage.scaleMode = StageScaleMode.NO_SCALE;
-			stage.align = StageAlign.BOTTOM_LEFT;
+			stage.align = StageAlign.TOP_LEFT;
 			stage.addEventListener(Event.DEACTIVATE, deactivate);
 			
 			// touch or gesture?
@@ -40,6 +42,12 @@ package com.stichoza.cutiecrawler {
 			cMatrix = new CutieManager(stage);
 			bgLayer = new BackgroundLayer();
 			addChild(bgLayer);
+			
+			var myText:TextField = new TextField();
+			myText.text = "stage: " + stage.stageWidth + "x" + stage.stageHeight;
+			myText.text += "\ncapbl: " + Capabilities.screenResolutionX + "x" + Capabilities.screenResolutionY;
+			addChild(myText);
+			
 			
 			for (var x:int = 0; x < cMatrix.maxBlocksX; x++) {
 				for (var y:int = 0; y < cMatrix.maxBlocksY; y++) {
